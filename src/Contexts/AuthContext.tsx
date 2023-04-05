@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getUser } from "../Utils/server/getInfo";
+import { getAllUsers } from "../Utils/server/getInfo";
 
 interface UserProps {
   id: string,
@@ -43,7 +43,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   function changeToken(token: string) {
     setToken(token);
     localStorage.setItem("token", token);
-    getUser(token).then(response => {
+    getAllUsers(token).then(response => {
       localStorage.setItem("user", JSON.stringify(response[0]))
       console.log("aqui", response[0]);
     })

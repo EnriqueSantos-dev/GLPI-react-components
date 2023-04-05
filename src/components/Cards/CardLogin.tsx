@@ -50,7 +50,7 @@ export function CardLogin () {
 	return (
 		<div className="container w-100 h-128 my-auto mx-auto bg-white-ice rounded-lg shadow-card">
 			<div className="pt-16 pb-9 text-center">
-				<CardTitle title="Fazer Login" />
+				<CardTitle title="Fazer Login" alt={""} srcimage={undefined} editImage={false} colorcard={""} handleImg={undefined} coloricon={undefined}  />
 			</div>
 			<Formik
 				initialValues={{ email: "", password: "" }}

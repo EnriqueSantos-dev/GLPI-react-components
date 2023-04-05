@@ -24,7 +24,7 @@ export default function AdminServiceBook(props: AdminProps) {
       setList(groups)
     }
     fetchData()
-    console.log(list)
+    
   }, [router.isReady])
   
   

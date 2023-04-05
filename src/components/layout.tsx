@@ -39,14 +39,14 @@ export default function Layout({ children, ...rest }: PageProps) {
     }
 
 
-  }, [loaded])
+  }, [loaded, auth])
 
   useEffect(() => {
     setTimeout(() => {
       verifyCookies()
       setLoaded(true)
     }, 300);
-  }, [])
+  }, [verifyCookies])
   if (loaded && (router.asPath.includes("login"))) {
     return(
       <main>

@@ -4,20 +4,20 @@ import { useState } from "react";
 import Modal from "../../components/Modal"
 
 interface CardTitleImageProps extends React.HTMLAttributes<HTMLElement>{
-  srcimage: string | StaticImport;
-  handleImg: Function;
-  editImage: boolean;
+  srcimage?: string | StaticImport;
+  handleImg?: Function;
+  editImage?: boolean;
+  alt?: string;
 }
 
 interface CardTitleColorProps extends React.HTMLAttributes<HTMLElement>{
-  colorcard: string;
-  coloricon: Icon.IconProps;
+  colorcard?: string;
+  coloricon?: Icon.IconProps;
 }
 
 interface CardTitleProps extends React.HTMLAttributes<HTMLElement>, CardTitleImageProps, CardTitleColorProps{
   title: string;
   // type: CardTitleImageProps | CardTitleColorProps | "none";
-  alt: string;
 }
 
 export function CardTitle(props: CardTitleProps ) {

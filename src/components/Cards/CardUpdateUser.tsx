@@ -12,6 +12,7 @@ import { getUserId } from "../../Utils/server/getInfo";
 import { User } from "../../Utils/server/types";
 import { useEffect, useState } from "react";
 import { Divide } from "phosphor-react";
+import Link from "next/link";
 
 const validate = yup.object().shape({
 	fullName: validationSchema.fullName,

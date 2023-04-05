@@ -29,17 +29,19 @@ export const CardDeleteService = () => {
 	
 	const token = localStorage.getItem("token");
 	const router = useRouter()
-	const {subGroupId} = router.query
+	const { subGroupId } = router.query
+	
 	
 	const [listService, setListService] = useState<Group[]>([])
 	useEffect(() => {
 		if (!router.isReady) return;
 		const fetchData = async () => {
-			const response = await getAllServices(subGroupId)
+			
+			const response = await getAllServices(subGroupId as string)
 			setListService(response)
 		}
 		fetchData()
-	}, [router.isReady, listService, subGroupId])
+	}, [listService, router.isReady, subGroupId])
 	
 	// console.log("aqui", listService[0].title);
 	return (
@@ -102,7 +104,7 @@ export const CardDeleteService = () => {
 							<div className="flex justify-end gap-x-3.5 mr-14 mt-10">
 			
 								<Button
-									title={isSubmitting ?  <Spinner size="md" /> : "Excluir"}
+									title={"Excluir"}
 									theme="primaryAction"
 									type="submit"
 									disabled={isSubmitting || !isValid}
