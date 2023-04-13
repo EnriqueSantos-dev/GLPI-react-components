@@ -31,7 +31,9 @@ export default function AdminServiceBook(props: AdminProps) {
       <Head>
         <title>Administrar servicebook</title>
       </Head>
-      <AdminServiceBookTypeList list={list} title={"Grupos"} />
+      <div className='h-full p-8'> 
+        <AdminServiceBookTypeList list={list} title={"Grupos"} />     
+      </div>
     </>
   )
 }

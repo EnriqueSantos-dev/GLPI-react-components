@@ -1,8 +1,6 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { DotsThreeVertical} from "phosphor-react";
 
-
-
 interface DropDownMenuProps {
 	date: string;
 }
