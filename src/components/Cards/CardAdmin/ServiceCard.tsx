@@ -1,12 +1,16 @@
 import Link from 'next/link';
 import * as Icon from 'phosphor-react'
+import { Service } from '../../../Utils/server/types';
 
-function ServiceCard(){
+interface ServiceCardProps{
+    service: Service;
+}
+function ServiceCard(props: ServiceCardProps){
     return(
         <div className="flex flex-row justify-between px-12 py-2 items-center">
             <div className="text-blue-ufal font-bold text-lg hover:underline decoration-2">
                 <Link href={"#"}>
-                    <h1>Serviço1</h1>
+                    <h1>{props.service.title}</h1>
                 </Link>
             </div>
             <div className="flex flex-row gap-4 pr-8">

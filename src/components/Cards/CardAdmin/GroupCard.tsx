@@ -2,7 +2,12 @@ import * as Icon from 'phosphor-react'
 import {useState} from 'react';
 import { CardLine } from '../CardLine';
 import SubgroupCard from './SubgroupCard';
-function GroupCard(){
+import { GroupInfo, SubgroupInfo } from '../../../Utils/server/types';
+
+interface GroupCardProps{
+    group: GroupInfo;
+}
+function GroupCard(props: GroupCardProps){
 
     const [open, setOpen] = useState<boolean>(false);
 
@@ -22,8 +27,8 @@ function GroupCard(){
                 <div className="flex flex-row text-black-text items-center gap-4 pl-2">
                     <Icon.Book size={32}/>
                     <div className="flex flex-col">
-                        <h1 className="font-bold cursor-text">Grupo 1</h1>
-                        <h3 className="text-sm font-light cursor-text">3 subgrupos</h3>
+                        <h1 className="font-bold cursor-text">{props.group.group?.description}</h1>
+                        <h3 className="text-sm font-light cursor-text">{props.group.subgroups?.length} Subgrupos</h3>
                     </div>
                 </div>
                 <div className='flex flex-row items-center gap-4'>
@@ -41,8 +46,8 @@ function GroupCard(){
                 </div>
             </div>
             {open ? <div className='pt-4'><CardLine/></div> : <></>}
-            {open ? list.map(subgroup => {
-                return <SubgroupCard/>
+            {open ? props.group.subgroups?.map((subgroup: SubgroupInfo) => {
+                return <SubgroupCard subgroup={subgroup}/>
             }) : <></>}
         </div>
     );

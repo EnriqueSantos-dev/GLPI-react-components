@@ -9,9 +9,12 @@ import { validationSchema } from '../../../Utils/validations';
 import { Form, Formik } from 'formik';
 import {useMessage} from "../../../Contexts/MessageContext"
 import GroupCard from '../../../components/Cards/CardAdmin/GroupCard';
+import { group } from 'console'
+import { GroupInfo } from '../../../Utils/server/types';
+import { Spinner } from '@chakra-ui/react';
 
 interface AdminProps {
-  list: any[];
+  list: GroupInfo[] | undefined;
   title: string;
 }
 
@@ -41,7 +44,12 @@ export default function AdminServiceBookTypeList(props: AdminProps) {
             <Button title="Novo Grupo" theme='withIcon' icon={<Icon.Plus size={24}/>}/>
         </div>
         <div className='px-4'>
-          <GroupCard/>
+        {props.list !== undefined ?
+								props.list.map((group: GroupInfo) => {
+							return (
+								<GroupCard group={group}/>
+							);
+						}): <div className="flex justify-center"><Spinner size="lg" /></div>}
 
         </div>
       {/*

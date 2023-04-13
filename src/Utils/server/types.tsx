@@ -1,5 +1,18 @@
 // * lista de tipos de dados que utilizamos
 
+export interface AdminProps {
+	list: any[];
+	title: string;
+  }
+export interface GroupInfo {
+	group?: Group;
+	subgroups?: SubgroupInfo[]
+  }
+export interface SubgroupInfo {
+	subgroup?: SubGroup;
+	services?: Service[];
+  }
+
 export interface Service{
   id: string;
 	description: string;

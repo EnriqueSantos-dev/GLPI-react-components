@@ -2,8 +2,13 @@ import * as Icon from 'phosphor-react'
 import {useState} from 'react';
 import { CardLine } from '../CardLine';
 import ServiceCard from './ServiceCard';
+import { SubgroupInfo } from '../../../Utils/server/types';
 
-function SubgroupCard(){
+interface SubgroupCardProps{
+    subgroup: SubgroupInfo;
+}
+
+function SubgroupCard(props: SubgroupCardProps){
     const [open, setOpen] = useState<boolean>(false);
 
     function deleteSubgroup(){
@@ -22,8 +27,8 @@ function SubgroupCard(){
                 <div className="flex flex-row text-black-text items-center gap-4 pl-2">
                     <Icon.Airplane size={24}/>
                     <div className="flex flex-col">
-                        <h1 className="font-bold cursor-text">Subgrupo 1</h1>
-                        <h3 className="text-sm font-light cursor-text">2 Serviços</h3>
+                        <h1 className="font-bold cursor-text">{props.subgroup.subgroup?.description}</h1>
+                        <h3 className="text-sm font-light cursor-text">{props.subgroup.services?.length} Serviços</h3>
                     </div>
                 </div>
                 <div className='flex flex-row items-center gap-4'>
@@ -39,9 +44,9 @@ function SubgroupCard(){
                 </div>
             </div>
             {open ? <div className='pt-4'><CardLine/></div> : <></>}
-            {open ? list.map(subgroup => {
+            {open ? props.subgroup.services?.map(service => {
                 return <div>
-                    <ServiceCard/>
+                    <ServiceCard service={service}/>
                     <CardLine/>
                     </div>
             }) : <></>}
